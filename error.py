@@ -26,3 +26,5 @@ def max_bits(minimal_error, p):
 def max_bits_hops(minimal_error, BER, hops):
     return max_bits(minimal_error, BER)/hops
 
+def max_BER_hops(bits, F_error, hops):
+    return 1-np.power(F_error, 1/(hops*bits))

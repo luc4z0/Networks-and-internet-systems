@@ -17,3 +17,7 @@ def subnet(addr, mask):
     print("Cidr: {0}".format(cidr))
     print("Network: {0}".format('.'.join(map(str, netw))))
     print("Broadcast: {0}".format('.'.join(map(str, bcas))))
+
+def print_bin(addr):
+    print(bin(addr[0]),bin(addr[1]),bin(addr[2]),bin(addr[3]))
+    return

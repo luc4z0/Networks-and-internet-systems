@@ -10,6 +10,34 @@ def sum_of_peaks(flows):
         _sum = _max + _sum
     return _sum
 
+def TCP(MSS, R_Window, threshold, transmitions, timeout=0):
+    congestion = MSS
+    print("Initialising transmittion. MSS=",MSS,"Recievers Advertised window=",R_Window)
+    print("Transmition number",1,"\tCongestion Window=", congestion, "\tthreshold=", threshold)
+    for t in range(2,transmitions + 1, 1):
+        if (t == timeout):
+            threshold = int(congestion/2)
+            congestion = MSS
+        else:
+            if (congestion >= R_Window):
+                congestion = R_Window
+            else:
+                if (congestion >= threshold):
+                    if ((congestion + MSS) >= R_Window):
+                        congestion = R_Window
+                    else:
+                        congestion += MSS #linear
+                else:
+                    if (congestion * 2 >= threshold):
+                        congestion = threshold
+                    else:
+                        congestion = congestion * 2
+        print("===================================================================")
+        print("Transmition number",t,"\tCongestion Window=", congestion, "\tthreshold=", threshold)
+
+def propagation_delay(meters, velocity):
+    return meters / velocity
+
 
 
 

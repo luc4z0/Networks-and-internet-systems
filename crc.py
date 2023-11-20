@@ -48,21 +48,20 @@ class CRC:
 
 	def reciverSide(self,key,data):
 		r = self.crc(data,key)
-		size = len(key)
-		print(r)
-		if r == size*0:
+		print("Remainder:", r)
+		if int(r) == 0:
 			print("No Error")
 		else:
 			print("Error")
 
 
 
-data = '100100'
-key = '1101'
+data = '101001100100101101001100100101'
+key = '10101'
 c = CRC()
 c.encodedData(data,key)
 print('---------------')
-c.reciverSide(c.cdw,key)
+c.reciverSide(key, c.cdw)
 print('---------------')
 print(c.cdw)
 
